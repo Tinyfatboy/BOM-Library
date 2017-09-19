@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button{
+            margin-bottom: 50px;
+            border: 0;
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <button id='openCenter'>在页面中间打开aidu首页</button>
+    <button id="div">点击后生成查询字符串</button>
+    <button id="button1">点击后查找查询字符串，输出在控制台</button>
+    <button id="button2">点击后修改查询字符串</button>
+    <script src="bom.js"></script>
+    <script>
+        var openCenter = document.querySelector('#openCenter')
+        openCenter.onclick = function(){
+            $.bom.openAtCenter('https://baidu.com/', 500, 300)
+        }
+
+        var div = document.querySelector('#div')
+        div.addEventListener('click', function() {
+            location.search = 'xxx=yyy&测试=中文'
+        })
+        var button1 =  document.querySelector('#button1')
+        button1.addEventListener('click', function() {
+            console.log($.bom.search('xxx'))
+            console.log($.bom.search('测试'))
+        })
+        var button2 = document.querySelector('#button2')
+        button2.addEventListener('click', function() {
+            $.bom.search('xxx', 'zzz')
+            $.bom.search('测试', '更改字符')
+        })
+
+    </script>
+</body>
+</html>
