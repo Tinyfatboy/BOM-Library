@@ -20,20 +20,14 @@ $.bom = {
             }
 
             // 在&处分割成数组
-            console.log(search)
             let searchArray = search.split('&')
-
-            console.log(searchArray)
 
             // 把=改成键值对的形式
             for (var i = 0; i < searchArray.length; i++) {
                 let parts = searchArray[i].split('=')
-                console.log(parts)
-
                 // decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码
                 // 防止中文出现乱码
                 result[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]) || ''
-                console.log(result)
             }
             return result
         }
